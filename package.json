@@ -1,0 +1,35 @@
+{
+  "name": "bookdrivetest",
+  "version": "1.0.0",
+  "description": "This is an assignment built for the course PROG8671-24F-Sec2-Full-Stack Programming by Bibin.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bibintomj/bookdrivetest.git"
+  },
+  "keywords": [
+    "Book",
+    "Drive",
+    "Test",
+    "Sample",
+    "Node",
+    "Project"
+  ],
+  "author": "bibintomj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bibintomj/bookdrivetest/issues"
+  },
+  "homepage": "https://github.com/bibintomj/bookdrivetest",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/general-head'); -%>
+<body>
+    <!-- Header/Navbar -->
+    <%- include('layouts/general-header', { 'selectedItem': 'g2' } ); -%>
+
+    <!-- G2 Test Section with hero image as background -->
+    <section id="g2-dashboard" class="g2-form-container">
+        <!-- Title on the left -->
+        <div class="title">
+            <br>
+            <h5>G2 Test Registration</h5>
+        </div>
+        
+        <!-- Form on the right -->
+        <div class="form-wrapper">
+            <h2>Personal Information</h2>
+
+            <form action="#" method="POST">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="licenseNumber">License Number</label>
+                    <input type="text" id="licenseNumber" name="licenseNumber" maxlength="8" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <br>
+                <!-- Horizontal rule between sections -->
+                <hr>
+                <br><br>
+                <h2>Car Information</h2>
+                <!-- Car Information Section -->
+                <div class="form-section">
+                    <label for="make">Make</label>
+                    <input type="text" id="make" name="make" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="model">Model</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="year">Year</label>
+                    <input type="number" id="year" name="year" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="plateNumber">Plate Number</label>
+                    <input type="text" id="plateNumber" name="plateNumber" required>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <%- include('layouts/general-script'); -%>
+</body>
+</html>

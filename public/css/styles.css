@@ -1,0 +1,396 @@
+/* Importing Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    background-color: #141515;
+}
+
+/* Navbar styling with background blur */
+header {
+    background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
+    padding: 15px 40px;
+    backdrop-filter: blur(10px); /* Blur effect */
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Ensures image and text are vertically aligned */
+}
+
+.logo-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    filter: invert(100%); /* Make logo white */
+    vertical-align: middle; /* Fix alignment issue */
+}
+
+.logo span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10px;
+}
+
+.nav-links li a:hover {
+    background-color: #ffffff52;
+    border-radius: 10px;
+}
+
+/* Navbar link active state */
+.nav-links li a.active {
+    background-color: #ffffff;
+    color: #4a4f52;
+    border-radius: 10px;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px;
+    border-radius: 5px;
+}
+
+/* Dashboard Section with Hero Image */
+.dashboard {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
+
+#home-dashboard {
+    background: url('../assets/hero-with-overlay.webp') no-repeat center center/cover;
+}
+
+#g-dashboard {
+    background: url('../assets/driving-road.webp') no-repeat center center/cover;
+}
+
+#g2-dashboard {
+    background: url('../assets/driving2-road.webp') no-repeat center center/cover;
+}
+
+#login-dashboard {
+    background: url('../assets/car-console.webp') no-repeat center center/cover;
+}
+
+.dashboard h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.dashboard p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Booking Info Section */
+.booking-info {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.booking-info h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.booking-info p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.booking-info .posted {
+    font-size: 16px;
+    color: #9e9c9c;
+}
+
+.booking-info .posted span {
+    font-weight: 700;
+    color: #9d9c9c;
+}
+
+/* G2 Form Section */
+.g2-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 10%;
+    background: url('../assets/hero-with-overlay.webp') no-repeat center center/cover;
+    height: 100%;
+}
+
+.g2-form-container .title {
+    flex: 1;
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.g-test-form-container .form-wrapper {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0;
+    backdrop-filter: blur(10px); /* Blur effect */
+    /* margin-top: 50px; */
+}
+
+.g2-form-container .form-wrapper {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0;
+    backdrop-filter: blur(10px); /* Blur effect */
+    margin-top: 50px;
+}
+
+.g2-form-container h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.g2-form-container .form-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.g2-form-container label {
+    color: white;
+    width: 100%;
+    font-size: 16px;
+}
+
+.g2-form-container input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #cccccc42;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+}
+
+/* Horizontal rule between sections */
+.g2-form-container hr {
+    border: 0.5px solid rgba(255, 255, 255, 0.394);
+    margin: 20px 0;
+}
+
+.g2-form-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.g2-form-container button:hover {
+    background-color: #222;
+}
+
+/* General Form Input Styling */
+input {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #cccccc42;
+    border-radius: 10px;
+    background-color: rgba(41, 40, 40, 0.725);
+    backdrop-filter: blur(20px); /* Blur effect */
+    color: white;
+    font-size: medium;
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type=text]:focus {
+    border: 2px solid #ffffff;
+}
+
+/* General Button Styling */
+button {
+    width: 50%;
+    padding: 12px;
+    background-color: #505152;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 970px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 40px;
+        border-radius: 20px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.642); /* Semi-transparent background */
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .dashboard {
+        height: 100vh;
+    }
+
+    .dashboard h1 {
+        font-size: 40px;
+    }
+
+    .dashboard p {
+        font-size: 18px;
+    }
+
+    .booking-info h2 {
+        font-size: 24px;
+    }
+
+    .booking-info p {
+        font-size: 16px;
+    }
+
+    .form-wrapper {
+        max-width: 100%;
+        width: 90%;
+        padding: 15px;
+        margin: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
+
+    /* Specific G2 Page Adjustments */
+    .g2-form-container {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .title {
+        font-size: 40px;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .form-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    label {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard h1 {
+        font-size: 30px;
+    }
+
+    .booking-info h2 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input, button {
+        font-size: 12px;
+    }
+}
