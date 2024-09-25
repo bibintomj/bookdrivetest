@@ -26,7 +26,7 @@ This is a web-based application designed for booking drive tests in Canada. The 
    
 2. **Navigate to the project directory:**
    ```bash
-   cd drive-test-booking
+   cd bookdrivetest
    ```
 
 3. **Install the dependencies:**
@@ -34,9 +34,9 @@ This is a web-based application designed for booking drive tests in Canada. The 
    npm install
    ```
 
-4. **Run the server in development mode:**
+4. **Run the server using nodemon:**
    ```bash
-   npm run dev
+   npm start
    ```
 
    This command uses Nodemon to restart the server automatically when file changes are detected.
@@ -47,8 +47,7 @@ This is a web-based application designed for booking drive tests in Canada. The 
 ### Important Commands
 
 - `npm install`: Installs all necessary dependencies.
-- `npm run dev`: Starts the server in development mode with Nodemon.
-- `npm start`: Starts the server in production mode.
+- `npm start`: Starts the server with Nodemon.
 
 ## Screenshots
 
