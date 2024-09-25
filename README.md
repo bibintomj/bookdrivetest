@@ -53,13 +53,13 @@ This is a web-based application designed for booking drive tests in Canada. The 
 ## Screenshots
 
 ### Dashboard
-![Dashboard](repo_assets/dashboard.png)
+![Dashboard](repo_assets/dashboard.webp)
 
 ### G2 Booking
-![G2 Page](repo_assets/g2.png)
+![G2 Page](repo_assets/g2.webp)
 
 ### G Booking
-![G Page](repo_assets/g.png)
+![G Page](repo_assets/g.webp)
 
 
 ## About
