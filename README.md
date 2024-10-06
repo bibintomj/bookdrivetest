@@ -9,6 +9,7 @@ This is a web-based application designed for booking drive tests in Canada. The 
 - **Express.js**: Web framework for handling HTTP requests.
 - **EJS**: Embedded JavaScript for dynamic HTML templating.
 - **HTML & CSS**: Frontend structure and styling.
+- **MongoDB**: Non relational Cloud database storage.
 - **Nodemon**: Automatically restarts the server on file changes during development.
 
 ## How to Run This Project
