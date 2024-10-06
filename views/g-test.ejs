@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/general-head'); -%>
-<body>
-    <!-- Header/Navbar -->
-    <%- include('layouts/general-header', { 'selectedItem': 'g' } ); -%>
+    <%- include('layouts/general-head'); -%>
+    <body>
+        <!-- Header/Navbar -->
+        <%- include('layouts/general-header', { 'selectedItem': 'g' } ); -%>
 
-    <!-- G Test Section -->
-    <section id="g-dashboard" class="g-test-form-container dashboard">
-        
-        <div class="form-wrapper">
-            <h2>G Test Information</h2>
+        <!-- G Test Section -->
+        <section id="g-dashboard" class="g-test-form-container dashboard">
+            <div class="form-wrapper" id="g-form-wrapper">
+                <h2>G Test Information</h2>
 
-            <!-- License Input Section -->
-            <form action="#" method="POST">
-                <label for="licenseNumber">Enter License Number</label>
-                <input type="text" id="licenseNumber" name="licenseNumber" maxlength="17" required placeholder="eg. AXXXX-XXXXX-XXXXX">
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </section>
+                <!-- License Input Section -->
+                <form id="g-form" action="#" method="POST">
+                    <label for="licenseNumber">Enter License Number</label>
+                    <div id="licenseNumberContainer">
+                        <input
+                            type="text"
+                            id="licenseNumber"
+                            name="licenseNumber"
+                            maxlength="15"
+                            required
+                            placeholder="eg. AXXXXXXXXXXXXXX"
+                            value="<%= id %>"
+                        />
+                        <button type="submit" id="submit">Lookup</button>
+                    </div>
+                </form>
+                <!-- <br> -->
+                <% if (error != null) { %>
+                <span id="g-error" class="error"><%= error %></span>
+                <br />
+                <a href="/g2-test">Register Here</a>
+                <br /><br />
+                <% } %>
+                <span id="validationError" class="error"></span>
+                <% if (user != null) { %> <%- include('g-test-user-info', { user
+                } ); -%> <% } %>
+            </div>
+        </section>
 
-    <!-- Scripts -->
-    <%- include('layouts/general-script'); -%>
-</body>
+        <!-- Scripts -->
+        <%- include('layouts/general-script'); -%>
+        <script src="/js/g-test.js"></script>
+        <script>
+            window.userData = <%- JSON.stringify(user) %>;
+        </script>
+    </body>
 </html>

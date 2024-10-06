@@ -1,17 +1,48 @@
 /* Importing Poppins Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+:root {
+    color-scheme: light dark;
+    --backgroundColor: light-dark(#f3f3f3, #17181a);
+
+    --foregroundColor: light-dark(#000000, #ffffff);
+    --secondaryForegroundColor: light-dark(
+        rgba(0, 0, 0, 0.466),
+        rgba(255, 255, 255, 0.494)
+    );
+
+    --primaryAccentColor: light-dark(#000000, #ffffff);
+
+    --borderColor: light-dark(rgba(5, 5, 5, 0.39), rgba(255, 255, 255, 0.296));
+
+    --blurBackground: light-dark(
+        rgba(255, 255, 255, 0.88),
+        rgba(24, 24, 24, 0.7)
+    );
+
+    --navForegroundColor: light-dark(#ffffff, #ffffff);
+    --navSelectionForgroundColor: light-dark(black, black);
+
+    --hoverBackgroundColor: light-dark(#ffffff52, #ffffff52);
+
+    --errorLabelColor: rgb(226, 33, 33);
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    color: var(--foregroundColor);
     overflow-x: hidden;
-    background-color: #141515;
+    background-color: var(--backgroundColor);
+    /* background-color: #141515; */
 }
 
 /* Navbar styling with background blur */
@@ -48,7 +79,7 @@ header {
     vertical-align: middle;
     font-size: 20px;
     font-weight: 700;
-    color: white;
+    color: var(--navForegroundColor);
 }
 
 .nav-links {
@@ -61,7 +92,7 @@ header {
 }
 
 .nav-links li a {
-    color: white;
+    color: var(--navForegroundColor);
     text-decoration: none;
     font-weight: 500;
     padding: 10px;
@@ -70,14 +101,14 @@ header {
 }
 
 .nav-links li a:hover {
-    background-color: #ffffff52;
+    background-color: var(--hoverBackgroundColor);
     border-radius: 10px;
 }
 
 /* Navbar link active state */
 .nav-links li a.active {
-    background-color: #ffffff;
-    color: #4a4f52;
+    background-color: var(--navForegroundColor);
+    color: var(--navSelectionForgroundColor);
     border-radius: 10px;
 }
 
@@ -91,7 +122,7 @@ header {
 .hamburger span {
     height: 3px;
     width: 25px;
-    background-color: white;
+    background-color: var(--navForegroundColor);
     margin: 3px;
     border-radius: 5px;
 }
@@ -108,19 +139,22 @@ header {
 }
 
 #home-dashboard {
-    background: url('../assets/hero-with-overlay.webp') no-repeat center center/cover;
+    background: url("../assets/hero-with-overlay.webp") no-repeat center
+        center/cover;
 }
 
 #g-dashboard {
-    background: url('../assets/driving-road.webp') no-repeat center center/cover;
+    background: url("../assets/driving-road.webp") no-repeat center center/cover;
+    justify-content: start;
 }
 
 #g2-dashboard {
-    background: url('../assets/driving2-road.webp') no-repeat center center/cover;
+    background: url("../assets/driving2-road.webp") no-repeat center
+        center/cover;
 }
 
 #login-dashboard {
-    background: url('../assets/car-console.webp') no-repeat center center/cover;
+    background: url("../assets/car-console.webp") no-repeat center center/cover;
 }
 
 .dashboard h1 {
@@ -152,21 +186,22 @@ header {
 
 .booking-info .posted {
     font-size: 16px;
-    color: #9e9c9c;
+    color: var(--secondaryForegroundColor);
 }
 
 .booking-info .posted span {
     font-weight: 700;
-    color: #9d9c9c;
+    color: var(--secondaryForegroundColor);
 }
 
 /* G2 Form Section */
 .g2-form-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 60px 10%;
-    background: url('../assets/hero-with-overlay.webp') no-repeat center center/cover;
+    background: url("../assets/hero-with-overlay.webp") no-repeat center
+        center/cover;
     height: 100%;
 }
 
@@ -176,32 +211,33 @@ header {
     font-size: 60px;
     font-weight: bold;
     padding-left: 20px;
+    margin-top: 35vh;
 }
 
 .g-test-form-container .form-wrapper {
-    background: rgba(24, 24, 24, 0.7); /* Semi-transparent background */
-    padding: 40px;
+    background: var(--blurBackground); /* Semi-transparent background */
+    /* padding: 40px; */
     border-radius: 30px;
     max-width: 600px;
     margin: 0;
-    backdrop-filter: blur(10px); /* Blur effect */
-    border: 0.5px solid rgba(255, 255, 255, 0.296);
+    backdrop-filter: blur(10px) saturate(200%); /* Blur effect */
+    border: 0.5px solid var(--borderColor);
 }
 
 .g2-form-container .form-wrapper {
     flex: 1;
-    background: rgba(24, 24, 24, 0.7); /* Semi-transparent background */
+    background: var(--blurBackground); /* Semi-transparent background */
     padding: 40px;
     border-radius: 30px;
     max-width: 600px;
     margin: 0;
-    backdrop-filter: blur(10px); /* Blur effect */
+    backdrop-filter: blur(10px) saturate(200%); /* Blur effect */
     margin-top: 50px;
-    border: 0.5px solid rgba(255, 255, 255, 0.296);
+    border: 0.5px solid var(--borderColor);
 }
 
 .g2-form-container h2 {
-    color: white;
+    color: var(--foregroundColor);
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -214,7 +250,7 @@ header {
 }
 
 .g2-form-container label {
-    color: white;
+    color: var(--foregroundColor);
     width: 100%;
     font-size: 16px;
 }
@@ -222,32 +258,45 @@ header {
 .g2-form-container input {
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid #cccccc42;
+    border: 1px solid var(--borderColor);
     background-color: rgba(255, 255, 255, 0.1);
-    color: white;
+    color: var(--foregroundColor);
     font-size: 16px;
 }
 
 /* Horizontal rule between sections */
 .g2-form-container hr {
-    border: 0.5px solid rgba(255, 255, 255, 0.394);
+    border: 0.5px solid var(--borderColor);
     margin: 20px 0;
 }
 
 .g2-form-container button {
     width: 100%;
     padding: 12px;
-    background-color: #333;
-    color: white;
+    background-color: var(--primaryAccentColor);
+    color: var(--backgroundColor);
     font-size: 16px;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     margin-top: 20px;
 }
+#g-dashboard {
+    color: var(--foregroundColor);
+}
 
-.g2-form-container button:hover {
-    background-color: #222;
+.disabledInput {
+    opacity: 0.6;
+}
+
+.successBackgroundColor {
+    color: white;
+    background-color: green;
+}
+
+a {
+    color: var(--foregroundColor);
+    text-decoration: none;
 }
 
 /* General Form Input Styling */
@@ -256,35 +305,98 @@ input {
     height: 50px;
     padding: 10px;
     margin: 8px 0;
-    border: 1px solid #cccccc42;
+    border: 1px solid var(--borderColor);
     border-radius: 10px;
-    background-color: rgba(41, 40, 40, 0.725);
-    backdrop-filter: blur(20px); /* Blur effect */
-    color: white;
+    background-color: rgba(255, 255, 255, 0.063);
+    color: var(--foregroundColor);
     font-size: medium;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
-input[type=text]:focus {
-    border: 2px solid #ffffff;
+input[type="text"]:focus {
+    border: 1px solid var(--foregroundColor);
 }
 
 /* General Button Styling */
 button {
     width: 50%;
     padding: 12px;
-    background-color: #505152;
-    color: white;
+    background-color: var(--foregroundColor);
+    color: var(--backgroundColor);
     font-size: 16px;
     font-weight: 600;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    margin-top: 20px;
+    transition: 0.3s ease;
 }
 
 button:hover {
-    background-color: #333;
+    scale: 1.05;
+}
+
+.error {
+    color: var(--errorLabelColor);
+}
+
+#licenseNumberContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--borderColor);
+    border-radius: 20px;
+    padding: 1px 5px;
+    margin: 20px 30px;
+}
+
+#g-form #licenseNumber {
+    border: none;
+    margin: 0;
+    min-width: 200px;
+    color: var(--foregroundColor);
+    background-color: #00000000;
+}
+
+#g-form-wrapper {
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    padding-top: 20px;
+}
+
+#g-error {
+    margin: 20px;
+}
+
+#searchResult {
+    margin: 30px;
+}
+
+.search-form-wrapper {
+    margin: 30px;
+}
+
+.search-form-wrapper .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.search-form-wrapper .form-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-form-wrapper .form-section input {
+    margin: 20px 0px;
+    width: 60%;
+}
+
+#edit-user-form h2 {
+    text-align: left;
 }
 
 /* Responsive Design */
@@ -313,9 +425,9 @@ button:hover {
         display: flex;
     }
 
-    .dashboard {
-        height: 100vh;
-    }
+    /* .dashboard {
+        height: 100%;
+    } */
 
     .dashboard h1 {
         font-size: 40px;
@@ -336,7 +448,6 @@ button:hover {
     .form-wrapper {
         max-width: 100%;
         width: 90%;
-        padding: 15px;
         margin: 30px;
     }
 
@@ -348,7 +459,8 @@ button:hover {
         font-size: 14px;
     }
 
-    input, button {
+    input,
+    button {
         font-size: 14px;
     }
 
@@ -377,6 +489,29 @@ button:hover {
     input {
         width: 100%;
     }
+
+    /* G2 Form Section */
+    .g2-form-container {
+        align-items: center;
+    }
+
+    .g2-form-container .title {
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+
+    #g-form-wrapper {
+        margin-top: 80px;
+        margin-bottom: 30px;
+    }
+
+    .search-form-wrapper .form-section {
+        flex-direction: row;
+    }
+
+    .search-form-wrapper .form-section label {
+        width: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -392,7 +527,8 @@ button:hover {
         font-size: 20px;
     }
 
-    input, button {
+    input,
+    button {
         font-size: 12px;
     }
 }

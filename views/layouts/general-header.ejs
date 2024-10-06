@@ -1,7 +1,11 @@
 <header>
     <nav class="navbar">
         <div class="logo">
-            <img src="assets/favicon.svg" alt="DriveTest Logo" class="logo-img">
+            <img
+                src="/assets/favicon.svg"
+                alt="DriveTest Logo"
+                class="logo-img"
+            />
             <span>Book DriveTest</span>
         </div>
         <div class="hamburger" id="hamburger">
@@ -18,12 +22,12 @@
     </nav>
 </header>
 <script>
-    const key = '<%= selectedItem %>'
+    const key = "<%= selectedItem %>";
     const map = {
-        'dashboard': "#dashboardItem",
-        'g2': "#g2Item",
-        'g': "#gItem",
-        'login': "#loginItem"
+        dashboard: "#dashboardItem",
+        g2: "#g2Item",
+        g: "#gItem",
+        login: "#loginItem",
     };
-    $(map[key]).addClass('active')
+    $(map[key]).addClass("active");
 </script>

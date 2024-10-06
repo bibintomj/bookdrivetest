@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Head -->
-<%- include('layouts/general-head'); -%>
-<body>
-    <!-- Header/Navbar -->
-    <%- include('layouts/general-header', { 'selectedItem': 'dashboard' } ); -%>
-    <!-- Dashboard Section with Hero Image -->
-    <section id="home-dashboard" class="dashboard">
-        <h1>Dashboard</h1>
-        <p>DriveTest Booking Kiosk</p>
-    </section>
+    <!-- Head -->
+    <%- include('layouts/general-head'); -%>
+    <body>
+        <!-- Header/Navbar -->
+        <%- include('layouts/general-header', { 'selectedItem': 'dashboard' } );
+        -%>
+        <!-- Dashboard Section with Hero Image -->
+        <section id="home-dashboard" class="dashboard">
+            <h1>Dashboard</h1>
+            <p>DriveTest Booking Kiosk</p>
+        </section>
 
-    <!-- Booking Info Section -->
-    <section class="booking-info">
-        <h2>You can book G2/G drive test from this Kiosk</h2>
-        <p>You can book G2/G drive test from this Kiosk</p>
-        <p class="posted">Posted by <span>DriveTest Center</span></p>
-    </section>
-    <!-- Scripts -->
-    <%- include('layouts/general-script'); -%>
-</body>
+        <!-- Booking Info Section -->
+        <section class="booking-info">
+            <h2>You can book G2/G drive test from this Kiosk</h2>
+            <p>You can book G2/G drive test from this Kiosk</p>
+            <p class="posted">Posted by <span>DriveTest Center</span></p>
+        </section>
+        <!-- Scripts -->
+        <%- include('layouts/general-script'); -%>
+    </body>
 </html>
