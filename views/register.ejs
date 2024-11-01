@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -->
+    <%- include('layouts/general-head'); -%>
+    <body>
+        <!-- Header/Navbar -->
+        <%- include('layouts/general-header', { 'selectedItem': 'register' } ); -%>
+
+ 
+        <!-- Dashboard Section with Hero Image -->
+        <section id="login-dashboard" class="dashboard">
+            <div class="form-wrapper generic-flex">
+                <img src="assets/car-head.webp" class="side-picture" alt="picture of right side head lamp of an orange car">
+                
+                <form action="auth/register" method="POST">
+                    <h2>Register</h2>
+                    <br/>
+                    <div class="inputLabelContainer">
+                        <!-- <label class="genericLabelForInput" for="username">Username</label> -->
+                        <input 
+                            type="text" 
+                            id="username" 
+                            class="genericInput"
+                            name="username"
+                            maxlength="25"
+                            required
+                            placeholder="Username">
+                    </div>
+                    <div class="inputLabelContainer">
+                        <!-- <label class="genericLabelForInput" for="password">Password</label> -->
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="genericInput"
+                            name="password"
+                            maxlength="50"
+                            required
+                            placeholder="Password">
+                    </div>
+                    <div class="inputLabelContainer">
+                        <!-- <label class="genericLabelForInput" for="password">Password</label> -->
+                        <input 
+                            type="password" 
+                            id="confirmpassword" 
+                            class="genericInput"
+                            name="confirmpassword"
+                            maxlength="50"
+                            required
+                            placeholder="Confirm Password">
+                    </div>
+                    <br/>
+                    <div class="">
+                        <label class="genericLabelForInput" for="userType">I am</label>
+                        <select name="userType" id="userType" class="dropdown">
+                            <option value="driver">A Driver</option>
+                            <option value="examiner">An Examiner</option>
+                            <option value="admin">An Admin</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <span class="error" id="validationError"></span>
+                    <br/>
+                    <button type="submit" id="submit" class="fullWidthGenericButton">Register</button>
+                    <br/>
+                    <br/>
+                    <div>
+                        <span style="opacity: 0.5;">Have an account?&nbsp;&nbsp;&nbsp;</span>
+                        <br>
+                        <a href="/login">Login Here</a>
+                    </div>
+                </form>
+            </div>
+            <br>
+        </section>
+
+        <!-- Scripts -->
+        <%- include('layouts/general-script'); -%>
+        <script src="/js/register.js"></script>
+    </body>
+</html>

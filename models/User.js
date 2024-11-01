@@ -1,23 +1,75 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
+const UserType = require('../enums/userTypeEnum')
 
 const CarDetailSchema = new Schema({
-    make: String,
-    model: String,
-    year: Number,
-    plateNumber: String,
+    make: {
+        type: String,
+        default: ''
+    },
+    model: {
+        type: String,
+        default: ''
+    },
+    year: {
+        type: Number,
+        default: 0
+    },
+    plateNumber: {
+        type: String,
+        default: ''
+    },
 });
 
 const UserSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    licenseNumber: String,
-    age: Number,
+    firstName: {
+        type: String,
+        default: ''
+    },
+    lastName: {
+        type: String,
+        default: ''
+    },
+    licenseNumber: {
+        type: String,
+        default: ''
+    },
+    age: {
+        type: Number,
+        default: 0
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    userType: {
+        type: String,
+        enum: Object.values(UserType),
+        required: true
+    },
     carDetails: CarDetailSchema,
 });
 
+// I learned the hard way that this cannot be an arrow function. 
+// Arrow functions does not have their own 'this' context, 
+// instead they inherit it from surrounding context.
+UserSchema.pre("save", async function (next) {
+    const user = this
+    if (!user.isModified('password')) {
+        return next()
+    }
+    
+    const hash = await bcrypt.hash(this.password, 10);
+    user.password = hash
+    next();
+});
+
 const User = mongoose.model("User", UserSchema);
-// const Car = mongoose.model('Car', CarDetailSchema)
 
 module.exports = User;

@@ -57,11 +57,11 @@ function validatePersonalInfo(firstName, lastName, licenceNumber, dob) {
     }
 
     if (licenceNumber == "") {
-        errors.push("Last Name cannot be empty");
+        errors.push("Licence number cannot be empty");
     }
 
-    if (/^[A-Z](?:\d[- ]*){15}$/.test(licenceNumber)) {
-        errors.push("Licence Number must be in the format AXXXXXXXXXXXXXX");
+    if (licenceNumber.length != 8) {
+        errors.push("Licence Number must be 8 characters");
     }
 
     let date = new Date(dob);

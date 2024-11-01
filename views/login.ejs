@@ -6,12 +6,48 @@
         <!-- Header/Navbar -->
         <%- include('layouts/general-header', { 'selectedItem': 'login' } ); -%>
 
+ 
+
         <!-- Dashboard Section with Hero Image -->
         <section id="login-dashboard" class="dashboard">
-            <section class="content">
-                <h2>Login Under Construction</h2>
-                <p>This page is currently being developed.</p>
-            </section>
+            <div class="form-wrapper generic-flex">
+                <img src="assets/car-head2.webp" class="side-picture" alt="picture of right side head lamp of an orange car">
+                <form action="auth/login" method="POST">
+                    <h2>Login to Your Account</h2>
+                    <br/>
+                    <div class="inputLabelContainer">
+                        <!-- <label class="genericLabelForInput" for="username">Username</label> -->
+                        <input 
+                            type="text" 
+                            id="username" 
+                            class="genericInput"
+                            name="username"
+                            maxlength="25"
+                            required
+                            placeholder="eg. johndoe25">
+                    </div>
+                    <div class="inputLabelContainer">
+                        <!-- <label class="genericLabelForInput" for="password">Password</label> -->
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="genericInput"
+                            name="password"
+                            maxlength="50"
+                            required
+                            placeholder="Password">
+                    </div>
+                    <br/>
+                    <button type="submit" id="submit" class="fullWidthGenericButton">Login</button>
+                    <br/>
+                    <br/>
+                    <div>
+                        <span style="opacity: 0.5;">Dont have an account?&nbsp;&nbsp;&nbsp;</span>
+                        <br>
+                        <a href="/register">Register Here</a>
+                    </div>
+                </form>
+            </div>
         </section>
 
         <!-- Scripts -->

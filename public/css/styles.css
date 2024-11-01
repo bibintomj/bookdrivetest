@@ -55,6 +55,10 @@ header {
     z-index: 1000;
 }
 
+h2, span {
+    color: var(--foregroundColor);
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -155,6 +159,9 @@ header {
 
 #login-dashboard {
     background: url("../assets/car-console.webp") no-repeat center center/cover;
+    justify-content: normal;
+    padding-top: 150px;
+    padding-bottom: 30px;
 }
 
 .dashboard h1 {
@@ -233,6 +240,16 @@ header {
     margin: 0;
     backdrop-filter: blur(10px) saturate(200%); /* Blur effect */
     margin-top: 50px;
+    border: 0.5px solid var(--borderColor);
+}
+
+.form-wrapper {
+    background: var(--blurBackground); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 30px;
+    /* max-width: 600px; */
+    margin: 0;
+    backdrop-filter: blur(10px) saturate(200%); /* Blur effect */
     border: 0.5px solid var(--borderColor);
 }
 
@@ -337,6 +354,7 @@ button:hover {
 
 .error {
     color: var(--errorLabelColor);
+    text-align: left;
 }
 
 #licenseNumberContainer {
@@ -364,6 +382,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin-top: 200px;
+    padding: 0;
     padding-top: 20px;
 }
 
@@ -397,6 +416,53 @@ button:hover {
 
 #edit-user-form h2 {
     text-align: left;
+}
+
+.inputLabelContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.genericLabelForInput {
+    text-align: left;
+    margin-right: 30px;
+    color: var(--foregroundColor);
+}
+
+.genericInput {
+    /* width: 100%; */
+    /* width: auto; */
+}
+
+.fullWidthGenericButton {
+    /* width: 100%; */
+}
+
+.generic-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px
+}
+
+.side-picture {
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--borderColor);
+    object-fit: cover;
+}
+
+.dropdown {
+    height: 45px;
+    width: 200px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.063);
+    border: 1px solid var(--borderColor);
+    font-family: "Poppins", sans-serif;
+    appearance: none;
 }
 
 /* Responsive Design */
@@ -512,6 +578,18 @@ button:hover {
     .search-form-wrapper .form-section label {
         width: auto;
     }
+
+    .generic-flex {
+        display: flex;
+        flex-direction: column;
+        align-items:normal;
+    }
+
+    .side-picture {
+        width: auto;
+        height: 400px;
+    }
+    
 }
 
 @media (max-width: 480px) {

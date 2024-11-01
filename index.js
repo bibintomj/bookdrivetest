@@ -5,12 +5,12 @@ const path = require("path");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 
-// File Imports
-const {
-    insertUser,
-    findUserWithLicenseNumber,
-    updateCarInfoForUser,
-} = require("./core/g2-test");
+// Controllers
+const homeController = require('./controllers/home-controller')
+const { g, gTestGetUser, gTestUpdateUser } = require('./controllers/g-test-controller.js')
+const { g2, g2Register } = require('./controllers/g2-test-controller.js')
+const { loginPage, loginAction } = require('./controllers/login-controller.js')
+const { registerPage, registerAction } = require('./controllers/register-controller.js')
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -28,39 +28,22 @@ app.listen(3000, () => {
     console.log("Listening to port 3000");
 });
 
-app.get("/", (req, res) => {
-    res.render("index");
-});
+app.get("/", homeController);
 
-app.get("/g2-test", (req, res) => {
-    res.render("g2-test");
-});
+app.get("/g2-test", g2);
 
-app.post("/g2-test/register", async (req, res) => {
-    await insertUser(req.body);
-    res.redirect("/");
-});
+app.post("/g2-test/register", g2Register);
 
-app.get("/g-test", (req, res) => {
-    res.render("g-test", { id: "", user: null, error: null });
-});
+app.get("/g-test", g);
 
-app.get("/g-test/:id", async (req, res) => {
-    const user = await findUserWithLicenseNumber(req.params.id);
-    let error = null;
-    if (user == null) {
-        error = "No records found for this license number";
-    }
-    console.log(req.params.id, user, error);
-    res.render("g-test", { id: req.params.id, user, error });
-});
+app.get("/g-test/:id", gTestGetUser);
 
-app.post("/g-test/update", async (req, res) => {
-    const data = req.body;
-    await updateCarInfoForUser(data);
-    res.json({ message: "Data received successfully" });
-});
+app.post("/g-test/update", gTestUpdateUser);
 
-app.get("/login", (req, res) => {
-    res.render("login");
-});
+app.get("/register", registerPage);
+
+app.post("/auth/register", registerAction);
+
+app.get("/login", loginPage);
+
+app.post("/auth/login", loginAction);
