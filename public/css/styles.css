@@ -53,9 +53,11 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1000;
+    border-bottom: 0.5px solid var(--borderColor);
 }
 
-h2, span {
+h2,
+span {
     color: var(--foregroundColor);
 }
 
@@ -89,6 +91,7 @@ h2, span {
 .nav-links {
     list-style-type: none;
     display: flex;
+    align-items: center;
 }
 
 .nav-links li {
@@ -99,7 +102,7 @@ h2, span {
     color: var(--navForegroundColor);
     text-decoration: none;
     font-weight: 500;
-    padding: 10px;
+    padding: 10px 15px;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 10px;
 }
@@ -311,6 +314,11 @@ h2, span {
     background-color: green;
 }
 
+.failureBackgroundColor {
+    color: white;
+    background-color: rgb(145, 4, 4);
+}
+
 a {
     color: var(--foregroundColor);
     text-decoration: none;
@@ -443,7 +451,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px
+    gap: 30px;
 }
 
 .side-picture {
@@ -465,6 +473,34 @@ button:hover {
     appearance: none;
 }
 
+#name-item {
+    width: 40px;
+    height: 40px;
+    /* padding: 10px; */
+    background-color: rgba(0, 0, 0, 0.437);
+    border-radius: 12px;
+    display: inline-block;
+    background-position: bottom;
+    border: 1px solid var(--borderColor);
+}
+
+#logged-in-user-item {
+    display: flex;
+    align-items: center;
+}
+
+#logged-in-user-item a {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 15px;
+}
+
+#logged-in-user-item a:hover {
+   background-color: rgba(149, 11, 11, 0.364);
+}
+
 /* Responsive Design */
 @media (max-width: 970px) {
     .nav-links {
@@ -476,7 +512,10 @@ button:hover {
         border-radius: 20px;
         padding: 10px;
         backdrop-filter: blur(20px); /* Blur effect */
-        background: rgba(24, 24, 24, 0.7); /* Semi-transparent background */
+        -webkit-backdrop-filter: blur(20px);
+        background: rgba(45, 45, 45, 0.878); /* Semi-transparent background */
+        align-items: normal;
+        border: 0.5px solid var(--borderColor);
     }
 
     .nav-links.show {
@@ -582,14 +621,13 @@ button:hover {
     .generic-flex {
         display: flex;
         flex-direction: column;
-        align-items:normal;
+        align-items: normal;
     }
 
     .side-picture {
         width: auto;
         height: 400px;
     }
-    
 }
 
 @media (max-width: 480px) {

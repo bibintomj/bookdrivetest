@@ -1,10 +1,13 @@
 "use strict";
 
 $(document).ready(() => {
-    $("#submit").click((evt) => {
+    $("#submit").click(async (evt) => {
+        evt.preventDefault();
+
         const username = $("#username").val().trim();
         const password = $("#password").val().trim();
         const confirmPassword = $("#confirmpassword").val().trim();
+        const userType = $("#userType").val()
 
         const validationErrors = validate(username, password, confirmPassword)
 
@@ -15,8 +18,43 @@ $(document).ready(() => {
 
         // Prevent form submission if validation fails
         if (validationErrors.length != 0) {
-            evt.preventDefault();
             return;
+        }
+
+        const dataToPost  = {
+            username: username,
+            password: password,
+            userType: userType
+        }
+
+        try {
+            await fetch("/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dataToPost),
+            }).then((response) => {
+                response.json().then((data) => {
+                    const isError = data.status > 400
+                    const message = data.message
+    
+                    $("#submit").html(isError ? "Failed" : "Registered");
+                    $("#submit").toggleClass(isError ? "failureBackgroundColor" : "successBackgroundColor");
+
+                    $("#validationError").html(isError ? `${message}<br>` : ``)
+                    if (isError) {
+                        setTimeout(function () {
+                            $("#submit").html("Register");
+                            $("#submit").removeClass("failureBackgroundColor");
+                        }, 2000);
+                    } else {
+                        setTimeout(function () {
+                            location.href = "/login";
+                        }, 2000);
+                    }
+                })
+            });
+        } catch (error) {
+            console.error(error);
         }
     });
 });

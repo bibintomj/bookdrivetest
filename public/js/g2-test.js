@@ -2,7 +2,7 @@ const minimumDrivingAge = 16;
 $(document).ready(() => {
     $("#firstName").focus();
     setRangesForFields();
-
+    showUserDataIfExists()
     $("#submit").click((evt) => {
         // Personal Information
         const firstName = $("#firstName").val().trim();
@@ -116,4 +116,36 @@ function setRangesForFields() {
 
     // Set max year for the car model
     $("#year").attr("max", new Date().getFullYear());
+}
+
+function showUserDataIfExists() {
+    if (!userData.licenseNumber) {
+        return
+    }
+
+    $("#firstName").val(userData.firstName);
+    $("#lastName").val(userData.lastName);
+    $("#licenseNumber").removeAttr('maxlength')
+    $("#licenseNumber").val(userData.licenseNumber);
+    $("#dob-label").text("Age")
+    $("#dob").attr('type','text');
+    $("#dob").val(userData.age);
+
+    // Car Information
+    $("#make").val(userData.carDetails.make);
+    $("#model").val(userData.carDetails.model);
+    $("#year").val(userData.carDetails.year);
+    $("#plateNumber").val(userData.carDetails.plateNumber);
+
+    $("#firstName").prop("disabled", true);
+    $("#lastName").prop("disabled", true);
+    $("#licenseNumber").prop("disabled", true);
+    $("#dob").prop("disabled", true);
+
+    $("#make").prop("disabled", true);
+    $("#model").prop("disabled", true);
+    $("#year").prop("disabled", true);
+    $("#plateNumber").prop("disabled", true);
+
+    $("#submit").remove()
 }

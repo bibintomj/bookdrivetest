@@ -10,7 +10,7 @@
     <div class="user-info">
         <p><%= user.age %> Years</p>
         <p>&nbsp;&nbsp;|&nbsp;&nbsp;</p>
-        <p><%= user.licenseNumber %></p>
+        <p>License: <%= user.licenseNumber.substring(0,20) + "..." %></p>
     </div>
     <br />
     <hr />

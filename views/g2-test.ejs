@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="form-section">
-                        <label for="dob">Date of Birth</label>
+                        <label id="dob-label" for="dob">Date of Birth</label>
                         <input type="date" id="dob" name="dob" required />
                     </div>
                     <br />
@@ -120,5 +120,8 @@
         <!-- Scripts -->
         <%- include('layouts/general-script'); -%>
         <script src="/js/g2-test.js"></script>
+        <script>
+            window.userData = <%- JSON.stringify(user) %>;
+        </script>
     </body>
 </html>

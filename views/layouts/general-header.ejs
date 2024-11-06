@@ -15,10 +15,21 @@
         </div>
         <ul class="nav-links" id="nav-links">
             <li><a id="dashboardItem" href="/">Dashboard</a></li>
-            <li><a id="g2Item" href="/g2-test">G2 test</a></li>
-            <li><a id="gItem" href="/g-test">G Test</a></li>
-            <li><a id="registerItem" href="/register">Register</a></li>
-            <li><a id="loginItem" href="/login">Login</a></li>
+            <% if (authenticatedUserId && authenticatedUserType == 'driver') { %>
+                <li><a id="g2Item" href="/g2-test">G2 test</a></li>
+                <li><a id="gItem" href="/g-test/<%= authenticatedUsername %>">G Test</a></li>
+            <% } %>
+            <% if (!authenticatedUserId) { %>
+                <li><a id="registerItem" href="/register">Register</a></li>
+                <li><a id="loginItem" href="/login">Login</a></li>
+            <% } %>
+
+            <% if(authenticatedUserId) { %>
+                <li id="logged-in-user-item">
+                    <a href="/logout">Logout&nbsp;&nbsp;
+                        <b id="name-item"><%= authenticatedUsername.charAt(0).toUpperCase() %></b></a>
+                </li>
+            <% } %>
         </ul>
     </nav>
 </header>

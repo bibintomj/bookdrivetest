@@ -1,8 +1,10 @@
 
 const {
     insertUser,
+    findUserWithId,
     findUserWithCredentials,
     findUserWithLicenseNumber,
+    updateG2InfoForUser,
     updateCarInfoForUser,
 } = require("../core/g2-test");
 
@@ -11,8 +13,8 @@ const registerPage = (req, res) => {
 }
 
 const registerAction = async (req, res) => {
-    await insertUser(req.body);
-    res.redirect("/login");
+    const response = await insertUser(req.body);
+    res.status(response.status).json(response)
 }
 
 module.exports = { registerPage, registerAction }

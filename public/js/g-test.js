@@ -89,7 +89,7 @@ async function validateAndSave() {
             $("#updateCarInfoButton").html("Updated");
             $("#updateCarInfoButton").toggleClass("successBackgroundColor");
             setTimeout(function () {
-                location.replace("/g-test/" + userData.licenseNumber);
+                location.replace("/g-test/" + userData.username);
             }, 2000);
         });
     } catch (error) {

@@ -61,14 +61,26 @@ const UserSchema = new Schema({
 // instead they inherit it from surrounding context.
 UserSchema.pre("save", async function (next) {
     const user = this
-    if (!user.isModified('password')) {
-        return next()
+    if (user.isModified('password')) {
+        const hash = await bcrypt.hash(this.password, 10);
+        user.password = hash
     }
     
-    const hash = await bcrypt.hash(this.password, 10);
-    user.password = hash
     next();
 });
+
+UserSchema.pre("updateOne", async function (next) {
+    const update = this.getUpdate();
+
+    // Check if licenseNumber is being updated
+    if (update.licenseNumber) {
+        const hash = await bcrypt.hash(update.licenseNumber, 10);
+        update.licenseNumber = hash;
+    }
+
+    next();
+});
+
 
 const User = mongoose.model("User", UserSchema);
 

@@ -1,8 +1,10 @@
 // File Imports
 const {
     insertUser,
+    findUserWithId,
     findUserWithCredentials,
     findUserWithLicenseNumber,
+    updateG2InfoForUser,
     updateCarInfoForUser,
 } = require("../core/g2-test");
 
@@ -12,13 +14,13 @@ const g = (req, res) => {
 }
 
 const gTestGetUser = async (req, res) => {
-    const user = await findUserWithLicenseNumber(req.params.id);
+    const user = await findUserWithId(req.session.userId)
     let error = null;
-    if (user == null) {
-        error = "No records found for this license number";
+    if (!user.licenseNumber) {
+        error = "No records found";
     }
-    console.log(req.params.id, user, error);
-    res.render("g-test", { id: req.params.id, user, error });
+    console.log(req.params.username, user, error);
+    res.render("g-test", { username: req.params.username, user, error });
 }
 
 const gTestUpdateUser = async (req, res) => {

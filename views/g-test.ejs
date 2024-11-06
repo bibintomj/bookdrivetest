@@ -10,22 +10,6 @@
             <div class="form-wrapper" id="g-form-wrapper">
                 <h2>G Test Information</h2>
 
-                <!-- License Input Section -->
-                <form id="g-form" action="#" method="POST">
-                    <label for="licenseNumber">Enter License Number</label>
-                    <div id="licenseNumberContainer">
-                        <input
-                            type="text"
-                            id="licenseNumber"
-                            name="licenseNumber"
-                            maxlength="8"
-                            required
-                            placeholder="eg. XXXXXXXX"
-                            value="<%= id %>"
-                        />
-                        <button type="submit" id="submit">Lookup</button>
-                    </div>
-                </form>
                 <!-- <br> -->
                 <% if (error != null) { %>
                 <span id="g-error" class="error"><%= error %></span>
@@ -34,7 +18,7 @@
                 <br /><br />
                 <% } %>
                 <span id="validationError" class="error"></span>
-                <% if (user != null) { %> <%- include('g-test-user-info', { user
+                <% if (user != null && !error) { %> <%- include('g-test-user-info', { user
                 } ); -%> <% } %>
             </div>
         </section>
