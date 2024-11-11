@@ -91,9 +91,6 @@ async function hash(value, saltRounds) {
 }
 
 async function updateG2InfoForUser(info, user) {
-    const getAgeFromDOB = (birthDate) =>
-        Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e10);
-
     const car = {
         make: info.make,
         model: info.model,
@@ -106,7 +103,7 @@ async function updateG2InfoForUser(info, user) {
         firstName: info.firstName,
         lastName: info.lastName,
         licenseNumber: info.licenseNumber,
-        age: info.dob == undefined ? undefined : getAgeFromDOB(info.dob),
+        age: info.age,
         carDetails: car,
     };
     return await User.updateOne(filter, update);

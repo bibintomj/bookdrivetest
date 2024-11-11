@@ -1,14 +1,13 @@
 const minimumDrivingAge = 16;
 $(document).ready(() => {
     $("#firstName").focus();
-    setRangesForFields();
     showUserDataIfExists()
     $("#submit").click((evt) => {
         // Personal Information
         const firstName = $("#firstName").val().trim();
         const lastName = $("#lastName").val().trim();
         const licenceNumber = $("#licenseNumber").val().trim();
-        const dob = $("#dob").val().trim();
+        const age = $("#age").val().trim();
 
         // Car Information
         const make = $("#make").val().trim();
@@ -21,7 +20,7 @@ $(document).ready(() => {
             firstName,
             lastName,
             licenceNumber,
-            dob
+            age
         );
         const carInfoValidationErrors = validateCarInfo(
             make,
@@ -46,7 +45,7 @@ $(document).ready(() => {
     });
 });
 
-function validatePersonalInfo(firstName, lastName, licenceNumber, dob) {
+function validatePersonalInfo(firstName, lastName, licenceNumber, age) {
     let errors = [];
     if (firstName == "") {
         errors.push("First Name cannot be empty");
@@ -64,18 +63,8 @@ function validatePersonalInfo(firstName, lastName, licenceNumber, dob) {
         errors.push("Licence Number must be 8 characters");
     }
 
-    let date = new Date(dob);
-    const isValidDate = date instanceof Date && !isNaN(date);
-    if (isValidDate) {
-        date.setFullYear(date.getFullYear() + minimumDrivingAge);
-
-        if (date > new Date()) {
-            errors.push(
-                "You must be atleast 16 years to apply for a driving test"
-            );
-        }
-    } else {
-        errors.push("Please enter a valid date");
+    if (age < minimumDrivingAge) {
+        errors.push("You must be atleast 16 years to apply for a driving test");
     }
 
     return errors;
@@ -107,17 +96,6 @@ function validateCarInfo(make, model, year, plateNumber) {
     return errors;
 }
 
-function setRangesForFields() {
-    // Set max date on Date of Birth.
-    let maxDate = new Date();
-    maxDate.setFullYear(maxDate.getFullYear() - minimumDrivingAge);
-    let formattedDateString = maxDate.toISOString().split("T")[0];
-    $("#dob").attr("max", formattedDateString);
-
-    // Set max year for the car model
-    $("#year").attr("max", new Date().getFullYear());
-}
-
 function showUserDataIfExists() {
     if (!userData.licenseNumber) {
         return
@@ -125,27 +103,13 @@ function showUserDataIfExists() {
 
     $("#firstName").val(userData.firstName);
     $("#lastName").val(userData.lastName);
-    $("#licenseNumber").removeAttr('maxlength')
+    // $("#licenseNumber").removeAttr('maxlength')
     $("#licenseNumber").val(userData.licenseNumber);
-    $("#dob-label").text("Age")
-    $("#dob").attr('type','text');
-    $("#dob").val(userData.age);
+    $("#age").val(userData.age);
 
     // Car Information
     $("#make").val(userData.carDetails.make);
     $("#model").val(userData.carDetails.model);
     $("#year").val(userData.carDetails.year);
     $("#plateNumber").val(userData.carDetails.plateNumber);
-
-    $("#firstName").prop("disabled", true);
-    $("#lastName").prop("disabled", true);
-    $("#licenseNumber").prop("disabled", true);
-    $("#dob").prop("disabled", true);
-
-    $("#make").prop("disabled", true);
-    $("#model").prop("disabled", true);
-    $("#year").prop("disabled", true);
-    $("#plateNumber").prop("disabled", true);
-
-    $("#submit").remove()
 }
