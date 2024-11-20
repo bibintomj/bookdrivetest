@@ -53,6 +53,10 @@ const UserSchema = new Schema({
         enum: Object.values(UserType),
         required: true
     },
+    appointmentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Appointment',
+    },
     carDetails: CarDetailSchema,
 });
 

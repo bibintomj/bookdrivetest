@@ -24,6 +24,10 @@
                 <li><a id="loginItem" href="/login">Login</a></li>
             <% } %>
 
+            <% if (authenticatedUserId && authenticatedUserType == 'admin') { %>
+                <li><a id="appointmentItem" href="/appointment">Appointment</a></li>
+            <% } %>
+
             <% if(authenticatedUserId) { %>
                 <li id="logged-in-user-item">
                     <a href="/logout">Logout&nbsp;&nbsp;
@@ -40,6 +44,7 @@
         g2: "#g2Item",
         g: "#gItem",
         register: "#registerItem",
+        appointment: "#appointmentItem",
         login: "#loginItem",
     };
     $(map[key]).addClass("active");

@@ -35,6 +35,8 @@
     --hoverBackgroundColor: light-dark(#ffffff52, #ffffff52);
 
     --errorLabelColor: rgb(226, 33, 33);
+
+    --successGreen: green;
 }
 
 body {
@@ -354,6 +356,7 @@ button {
     border-radius: 12px;
     cursor: pointer;
     transition: 0.3s ease;
+    font-family: "Poppins", sans-serif;
 }
 
 button:hover {
@@ -456,7 +459,8 @@ button:hover {
 
 .side-picture {
     width: 350px;
-    height: auto;
+    /* height: auto; */
+    height: 100%;
     border-radius: 10px;
     border: 1px solid var(--borderColor);
     object-fit: cover;
@@ -499,6 +503,74 @@ button:hover {
 
 #logged-in-user-item a:hover {
    background-color: rgba(149, 11, 11, 0.364);
+}
+
+#appointment-content-view {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#selected-date-appointment-content {
+    display: none;
+}
+
+#selected-date-no-content {
+    color: var(--errorLabelColor);
+}
+
+/* #booked-appointment-details-view {
+    color: var(--successGreen);
+} */
+
+#booked-appointment-date {
+    margin-bottom: 0px;
+}
+
+.slot {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid var(--borderColor);
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    color: var(--foregroundColor);
+}
+
+#create-slots-btn {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 200px;
+}
+
+#selected-date-appointment-content p {
+    color: var(--foregroundColor);
+}
+
+.slot:hover {
+    background-color: var(--hoverBackgroundColor);
+    color: var(--foregroundColor);
+}
+
+.slot.selected {
+    background-color: var(--foregroundColor);
+    color: var(--backgroundColor);
+}
+
+#slots-container {
+    width: 330px;
+    margin-top: 10px;
+}
+
+.slot.disabled {
+    pointer-events: none; /* Disable interactions */
+    cursor: not-allowed;
+    background-color: var(--foregroundColor);
+    color: var(--backgroundColor);
+    opacity: 0.3;
 }
 
 /* Responsive Design */

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const Appointment = require("../models/Appointment");
 
 async function findUserWithId(userId) {
     return await User.findById(userId);
@@ -97,16 +98,21 @@ async function updateG2InfoForUser(info, user) {
         year: info.year,
         plateNumber: info.plateNumber,
     };
-
     const filter = { _id: user._id };
     const update = {
         firstName: info.firstName,
         lastName: info.lastName,
         licenseNumber: info.licenseNumber,
         age: info.age,
+        appointmentId: info.appointmentId,
         carDetails: car,
     };
-    return await User.updateOne(filter, update);
+    await User.updateOne(filter, update);
+    if (info.appointmentId) {
+        await Appointment.findByIdAndUpdate(info.appointmentId, {
+            isTimeSlotAvailable: false
+        })
+    }
 }
 
 async function updateCarInfoForUser(data) {

@@ -1,0 +1,107 @@
+<style>
+                
+    .calendar {
+        position: relative;
+        width: 330px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(132, 131, 131, 0.447);
+    }
+
+    .calendar__picture {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        padding-top: 10px;
+        /* background-color: #262626; */
+        color: var(--foregroundColor);
+        text-align: center;
+    }
+
+    .calendar__title {
+        margin: 0;
+        font-weight: 500;
+    }
+
+    button {
+        width: auto;
+    }
+
+    .calendar__nav {
+        background: none !important;
+        border: none !important;
+        color: var(--foregroundColor) !important;
+        font-size: 20px !important;
+        cursor: pointer !important;
+        width: auto !important;
+    }
+
+    .calendar__date {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .calendar__day,
+    .calendar__number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        color: var(--foregroundColor);
+    }
+
+    .calendar__day {
+        font-weight: bold;
+    }
+
+    .calendar__number {
+        cursor: pointer;
+        border-radius: 30px;
+
+    }
+
+    .calendar__number--disabled {
+        color: var(--borderColor);
+        pointer-events: none;
+    }
+
+    .calendar__number--current {
+        color: #f01400;
+        font-weight: bold;
+        border-radius: 20px;
+    }
+
+    .calendar__number--selected {
+        background-color: red;
+        color: #fff;
+        border-radius: 20px;
+        width: 30px;
+        height: 30px;
+    }
+
+    @media (max-width: 970px) {
+        .calendar {
+            width: 100%;
+        }
+    }
+</style>
+<div class="calendar">
+    <div class="calendar__picture">
+        <button type="button" class="calendar__nav calendar__nav--prev">
+            &lsaquo;
+        </button>
+        <h3 class="calendar__title"></h3>
+        <button type="button" class="calendar__nav calendar__nav--next">
+            &rsaquo;
+        </button>
+    </div>
+    <div class="calendar__date">
+        <!-- Date numbers will be generated dynamically -->
+    </div>
+</div>

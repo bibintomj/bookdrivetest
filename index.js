@@ -12,10 +12,12 @@ const { g, gTestGetUser, gTestUpdateUser } = require('./controllers/g-test-contr
 const { g2, g2Register } = require('./controllers/g2-test-controller.js')
 const { loginPage, loginAction, logoutAction } = require('./controllers/login-logout-controller.js')
 const { registerPage, registerAction } = require('./controllers/register-controller.js')
+const {  appointmentPage, createOrUpdateSlotAction, getAllSlots, getAvailableSlots, getAppointment } = require("./controllers/appointment-controller.js");
 
 const redirectIfAuthenticatedMiddleware = require('./middlewares/redirectIfAuthenticatedMiddleware.js')
 const redirectIfUnauthenticatedMiddleware = require('./middlewares/redirectIfUnauthenticatedMiddleware.js')
-const redirectIfNotDriverMiddleware = require('./middlewares/redirectIfNotDriverMiddleware.js')
+const redirectIfNotDriverMiddleware = require('./middlewares/redirectIfNotDriverMiddleware.js');
+const redirectIfNotAdminMiddleware = require('./middlewares/redirectIfNotAdminMiddleware.js');
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -69,4 +71,14 @@ app.get("/login", redirectIfAuthenticatedMiddleware, loginPage);
 
 app.post("/auth/login", redirectIfAuthenticatedMiddleware, loginAction);
 
-app.get("/logout", logoutAction)
+app.get("/appointment", redirectIfUnauthenticatedMiddleware, redirectIfNotAdminMiddleware, appointmentPage);
+
+app.post("/create-appointment-slot", createOrUpdateSlotAction);
+
+app.get('/get-all-slots/:date', getAllSlots);
+
+app.get('/get-available-slots/:date', getAvailableSlots);
+
+app.get('/get-appointment/:appointmentId', getAppointment);
+
+app.get("/logout", logoutAction);
