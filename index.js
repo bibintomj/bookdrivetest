@@ -12,12 +12,14 @@ const { g, gTestGetUser, gTestUpdateUser } = require('./controllers/g-test-contr
 const { g2, g2Register } = require('./controllers/g2-test-controller.js')
 const { loginPage, loginAction, logoutAction } = require('./controllers/login-logout-controller.js')
 const { registerPage, registerAction } = require('./controllers/register-controller.js')
-const {  appointmentPage, createOrUpdateSlotAction, getAllSlots, getAvailableSlots, getAppointment } = require("./controllers/appointment-controller.js");
+const { appointmentPage, createOrUpdateSlotAction, getAllSlots, getAvailableSlots, getAppointment } = require("./controllers/appointment-controller.js");
+const { examinerPage, fetchAppointments, userDetails, updateCandidateStatus } = require("./controllers/examiner-controller.js");
 
 const redirectIfAuthenticatedMiddleware = require('./middlewares/redirectIfAuthenticatedMiddleware.js')
 const redirectIfUnauthenticatedMiddleware = require('./middlewares/redirectIfUnauthenticatedMiddleware.js')
 const redirectIfNotDriverMiddleware = require('./middlewares/redirectIfNotDriverMiddleware.js');
 const redirectIfNotAdminMiddleware = require('./middlewares/redirectIfNotAdminMiddleware.js');
+const redirectIfNotExaminerMiddleware = require("./middlewares/redirectIfNotExaminerMiddleware.js");
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -80,5 +82,13 @@ app.get('/get-all-slots/:date', getAllSlots);
 app.get('/get-available-slots/:date', getAvailableSlots);
 
 app.get('/get-appointment/:appointmentId', getAppointment);
+
+app.get('/examiner', redirectIfNotExaminerMiddleware, examinerPage)
+
+app.get('/examiner/appointments', redirectIfNotExaminerMiddleware, fetchAppointments)
+
+app.get('/examiner/user-details/:id', redirectIfNotExaminerMiddleware, userDetails)
+
+app.post('/examiner/update-status', redirectIfNotExaminerMiddleware, updateCandidateStatus);
 
 app.get("/logout", logoutAction);

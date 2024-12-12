@@ -28,6 +28,10 @@
                 <li><a id="appointmentItem" href="/appointment">Appointment</a></li>
             <% } %>
 
+            <% if (authenticatedUserId && authenticatedUserType == 'examiner') { %>
+                <li><a id="appointmentItem" href="/examiner">Examiner</a></li>
+            <% } %>
+
             <% if(authenticatedUserId) { %>
                 <li id="logged-in-user-item">
                     <a href="/logout">Logout&nbsp;&nbsp;

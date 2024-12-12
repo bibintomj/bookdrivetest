@@ -78,9 +78,33 @@
             />
         </div>
         <span class="error" id="carInfoError"></span>
+
+        <div id="appointment-content-view">
+            <h2>Book an Appointment</h2>
+            <%- include('layouts/cal'); -%>
+
+            <div id="selected-date-appointment-content">
+                <p>Available Slots on</p>
+                <h2 id="selected-date">November 19, 2024</h2>
+                
+                <div id="slots-container">
+
+                </div>
+                <button id="create-slots-btn" class="fullWidthGenericButton" style="display: none;">Create Slots</button>
+            </div>
+            <div id="selected-date-no-content">
+                <p>No Slots available for this date</p>
+            </div>
+            <input type="text" id="testType" name="testType" value="G" style="display: none;">
+            <input type="text" id="appointmentId" name="appointmentId" style="display: none;">
+        </div>
+        <div id="booked-appointment-details-view">
+            <p>Appointment Scheduled</p>
+            <h3 id="booked-appointment-date-time"></h3>
+        </div>
         <br />
         <button type="submit" id="updateCarInfoButton">
-            Update Car Information
+            Save
         </button>
     </form>
     <div id="userData" data-user='<%- JSON.stringify(user) %>'></div>

@@ -59,6 +59,7 @@ header {
 }
 
 h2,
+h3,
 span {
     color: var(--foregroundColor);
 }
@@ -138,7 +139,7 @@ span {
 
 /* Dashboard Section with Hero Image */
 .dashboard {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,6 +178,7 @@ span {
 .dashboard p {
     font-size: 20px;
     font-weight: 400;
+    /* color: var(--foregroundColor); */
 }
 
 /* Booking Info Section */
@@ -393,6 +395,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin-top: 200px;
+    margin-bottom: 100px;
     padding: 0;
     padding-top: 20px;
 }
@@ -509,6 +512,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin: 20px 20px;
 }
 
 #selected-date-appointment-content {
@@ -546,6 +550,10 @@ button:hover {
     width: 200px;
 }
 
+#selected-date {
+    text-align: center !important;
+}
+
 #selected-date-appointment-content p {
     color: var(--foregroundColor);
 }
@@ -561,8 +569,10 @@ button:hover {
 }
 
 #slots-container {
-    width: 330px;
     margin-top: 10px;
+}
+.appointment-slots {
+    width: 330px;
 }
 
 .slot.disabled {
@@ -571,6 +581,85 @@ button:hover {
     background-color: var(--foregroundColor);
     color: var(--backgroundColor);
     opacity: 0.3;
+}
+
+.view-details-btn {
+    width: auto ;
+}
+
+#appointments-table-container {
+    margin-top: 20px; /* Add some margin above the table for better spacing */
+    overflow: hidden; /* Ensures rounded corners take effect */
+    border-radius: 20px; /* Rounded corners for the container */
+    border: 1px solid var(--secondaryForegroundColor);
+    box-sizing:border-box;
+}
+
+#appointments-table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures no double borders */
+    text-align: left; /* Align text to the left for readability */
+    font-size: 14px; /* Adjust font size */
+}
+
+#appointments-table th, 
+#appointments-table td {
+    padding: 20px 25px; /* Add space inside the cells */
+    /* border: 0.2px solid var(--secondaryForegroundColor);  */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#appointments-table td {
+   color: var(--foregroundColor);
+}
+
+#appointments-table th {
+    background-color: var(--navSelectionForgroundColor); /* Light gray background for table headers */
+    font-weight: bold; /* Make header text bold */
+}
+
+
+#appointments-table tr:hover {
+    background-color: #f1f1f109; /* Slightly darker gray when hovering */
+}
+
+#examiner-dashboard {
+    background-color: #17181a;
+}
+
+label, strong {
+    color: var(--foregroundColor);
+}
+
+.generic-text-area {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid var(--borderColor);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.063);
+    color: var(--foregroundColor);
+    font-size: medium;
+    font-family: "Poppins", sans-serif;
+}
+
+#examiner-action-buttons-container {
+    display: flex;
+}
+
+#examiner-action-buttons-container button {
+    margin: 10px;
+}
+
+#pass-btn {
+    background-color: var(--successGreen);
+    color: white;
+}
+
+#fail-btn {
+    background-color: var(--errorLabelColor);
+    color: white;
 }
 
 /* Responsive Design */

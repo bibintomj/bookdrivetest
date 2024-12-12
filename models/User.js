@@ -57,6 +57,20 @@ const UserSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Appointment',
     },
+    testType: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    comments: {
+        type: String,
+        default: '',
+    },
+    testStatus: {
+        type: String,
+        enum: ['pass', 'fail', 'decision pending'],
+        default: 'decision pending',
+    },
     carDetails: CarDetailSchema,
 });
 

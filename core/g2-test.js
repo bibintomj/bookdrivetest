@@ -12,12 +12,14 @@ async function findUserWithUsername(username) {
 }
 
 async function insertUser(info) {
-    const existingUser = await findUserWithUsername(info.username.toLowerCase())
+    const existingUser = await findUserWithUsername(
+        info.username.toLowerCase()
+    );
     if (existingUser) {
         return {
             status: 409,
-            message: "Username is already taken"
-        }
+            message: "Username is already taken",
+        };
     }
 
     const getAgeFromDOB = (birthDate) =>
@@ -29,7 +31,7 @@ async function insertUser(info) {
         year: info.year,
         plateNumber: info.plateNumber,
     };
-    
+
     const user = {
         firstName: info.firstName,
         lastName: info.lastName,
@@ -43,13 +45,13 @@ async function insertUser(info) {
     await User.create(user);
     return {
         status: 201,
-        message: "User Registered succesfully"
-    }
+        message: "User Registered succesfully",
+    };
 }
 
 async function findUserWithCredentials(username, password) {
     try {
-        const user = await User.findOne({ username: username })
+        const user = await User.findOne({ username: username });
         if (user) {
             const passwordsMatch = await bcrypt.compare(
                 password,
@@ -105,22 +107,35 @@ async function updateG2InfoForUser(info, user) {
         licenseNumber: info.licenseNumber,
         age: info.age,
         appointmentId: info.appointmentId,
+        testType: info.testType,
         carDetails: car,
     };
     await User.updateOne(filter, update);
     if (info.appointmentId) {
         await Appointment.findByIdAndUpdate(info.appointmentId, {
-            isTimeSlotAvailable: false
-        })
+            isTimeSlotAvailable: false,
+        });
     }
 }
 
 async function updateCarInfoForUser(data) {
-    return await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
         data.id,
-        { $set: { carDetails: data.carDetails } },
+        {
+            $set: {
+                appointmentId: data.appointmentId,
+                testType: data.testType,
+                carDetails: data.carDetails,
+            },
+        },
         { new: true }
     );
+
+    if (data.appointmentId) {
+        await Appointment.findByIdAndUpdate(data.appointmentId, {
+            isTimeSlotAvailable: false,
+        });
+    }
 }
 
 module.exports = {

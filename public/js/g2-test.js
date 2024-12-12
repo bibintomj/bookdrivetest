@@ -15,13 +15,14 @@ $(document).ready(async () => {
         const model = $("#model").val().trim();
         const year = $("#year").val().trim();
         const plateNumber = $("#plateNumber").val().trim();
+        const testType = "G2";
 
         // Check validation
         const personalInfoValidationErrors = validatePersonalInfo(
             firstName,
             lastName,
             licenceNumber,
-            age,
+            age
         );
         const carInfoValidationErrors = validateCarInfo(
             make,
@@ -62,6 +63,10 @@ function validatePersonalInfo(firstName, lastName, licenceNumber, age) {
 
     if (licenceNumber.length != 8) {
         errors.push("Licence Number must be 8 characters");
+
+        $('html, body').animate({
+            scrollTop: $('#licenseNumber').offset().top
+        }, 500); // Scroll duration in milliseconds
     }
 
     if (age < minimumDrivingAge) {
@@ -214,7 +219,6 @@ async function setupCalendar() {
 async function hideCalendarAndShowAppointment() {
     $('#appointment-content-view').hide(); // Hide the calendar view
     $('#booked-appointment-details-view').show(); // Show the appointment details view
-    console.log("FETCHING")
     try {
         // Fetch the appointment details from the backend using the appointment ID
         const response = await fetch(`/get-appointment/${userData.appointmentId}`);
