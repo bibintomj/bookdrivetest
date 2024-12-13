@@ -56,6 +56,7 @@ const UserSchema = new Schema({
     appointmentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Appointment',
+        default: null,
     },
     testType: {
         type: String,

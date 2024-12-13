@@ -77,6 +77,7 @@ async function validateAndSave() {
         id: userData._id,
         licenseNumber: userData.licenseNumber,
         appointmentId: appointmentId,
+        testStatus: "decision pending",
         testType: testType,
         carDetails: {
             make: make,
@@ -131,7 +132,7 @@ function validateCarInfo(make, model, year, plateNumber) {
 
 async function setupCalendar() {
 
-    if (userData.appointmentId && userData.testType == "G") {
+    if ((userData.appointmentId && userData.testType == "G") || (userData.testType == "G" && userData.testStatus != "decision pending")) {
         // If appointment exist, then no need to show the a calender
         await hideCalendarAndShowAppointment()
         return
@@ -225,8 +226,13 @@ async function setupCalendar() {
 
 async function hideCalendarAndShowAppointment() {
     $('#appointment-content-view').hide(); // Hide the calendar view
-    $('#booked-appointment-details-view').show(); // Show the appointment details view
-    console.log("FETCHING")
+    if (userData.appointmentId && userData.appointmentId != "null" && userData.appointmentId != null) {
+        $('#booked-appointment-details-view').show(); // Show the appointment details view
+    } else {
+        $('#booked-appointment-details-view').hide();
+        return
+    }
+
     try {
         // Fetch the appointment details from the backend using the appointment ID
         const response = await fetch(`/get-appointment/${userData.appointmentId}`);

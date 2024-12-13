@@ -1,4 +1,4 @@
-
+const User = require("../models/User");
 const {
     createOrUpdateSlot,
     createOrUpdateSlots,
@@ -29,6 +29,10 @@ const getAvailableSlots = async (req, res) => {
 
 const getAppointment = async (req, res) => {
     const appointmentId = req.params.appointmentId;
+    if (appointmentId == null || appointmentId == "null") {
+        res.status(404).send('Appointment not found');
+        return
+    }
     const appointment = await getAppointmentWithId(appointmentId);
     if (appointment) {
         res.json({
@@ -40,11 +44,35 @@ const getAppointment = async (req, res) => {
     }
 }
 
+const candidatesPage = async (req, res) => {
+    try {
+        res.render("candidates"); // No need to pass `candidates` here
+    } catch (error) {
+        console.error("Error rendering candidates page:", error);
+        res.status(500).send("Internal Server Error");
+    }
+};
+
+const fetchCandidates = async (req, res) => {
+    try {
+        // Fetch candidates with appointments
+        const candidates = await User.find({ appointmentId: { $exists: true } })
+            .populate("appointmentId")
+            .select("firstName lastName testType testStatus comments");
+        res.json(candidates); // Send JSON response
+    } catch (error) {
+        console.error("Error fetching candidates:", error);
+        res.status(500).send("Internal Server Error");
+    }
+};
+
 module.exports = { 
     appointmentPage,
     createOrUpdateSlotAction,
     getAllSlots,
     getAvailableSlots,
-    getAppointment
+    getAppointment,
+    candidatesPage,
+    fetchCandidates
 }
 

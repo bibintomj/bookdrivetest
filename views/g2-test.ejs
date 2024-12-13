@@ -143,6 +143,14 @@
                         <input type="text" id="appointmentId" name="appointmentId" style="display: none;">
                     </div>
 
+                    <div id="test-status-view" style="display: <%= user.testStatus !== 'decision pending' ? 'block' : 'none' %>;">
+                        <% if (user.testStatus === 'pass') { %>
+                            <p style="color: var(--successGreen);"> Congratulations!<br>You have <strong style="color: var(--successGreen);">passed</strong> the G2 exam.</p>
+                        <% } else if (user.testStatus === 'fail') { %>
+                            <p  style="color: var(--errorLabelColor);">You have <strong style="color: var(--errorLabelColor);">failed</strong> the G2 exam. <br>Please try again.</p>
+                        <% } %>
+                    </div>
+
                     <div id="booked-appointment-details-view">
                         <p>Appointment Scheduled</p>
                         <h3 id="booked-appointment-date-time"></h3>

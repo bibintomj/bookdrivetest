@@ -125,6 +125,7 @@ async function updateCarInfoForUser(data) {
             $set: {
                 appointmentId: data.appointmentId,
                 testType: data.testType,
+                testStatus: data.testStatus,
                 carDetails: data.carDetails,
             },
         },

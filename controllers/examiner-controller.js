@@ -42,6 +42,7 @@ const updateCandidateStatus = async (req, res) => {
 
         // Update the candidate's status and comments
         await User.findByIdAndUpdate(userId, {
+            appointmentId: null,
             testStatus: status,
             comments: comments || '',
         });

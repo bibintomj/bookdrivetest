@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -->
+    <%- include('layouts/general-head'); -%>
+    <body>
+        <!-- Header/Navbar -->
+        <%- include('layouts/general-header', { 'selectedItem': 'candidates' }); -%>
+
+        <!-- Candidates Dashboard -->
+        <section id="candidates-dashboard" class="dashboard">
+            <div class="form-wrapper">
+                <h2>Manage Candidates</h2>
+                <br>
+                <!-- Candidates Table -->
+                <div id="candidates-table-container">
+                    <table id="candidates-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Test Type</th>
+                                <th>Status</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows dynamically populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts -->
+        <%- include('layouts/general-script'); -%>
+        <script src="/js/candidates.js"></script>
+    </body>
+</html>

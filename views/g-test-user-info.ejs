@@ -98,6 +98,15 @@
             <input type="text" id="testType" name="testType" value="G" style="display: none;">
             <input type="text" id="appointmentId" name="appointmentId" style="display: none;">
         </div>
+
+        <div id="test-status-view" style="display: <%= (user.testType == 'G' && user.testStatus !== 'decision pending') ? 'block' : 'none' %>;">
+            <% if (user.testStatus === 'pass') { %>
+                <p>You have <strong>passed</strong> the G exam. Congratulations!</p>
+            <% } else if (user.testStatus === 'fail') { %>
+                <p>You have <strong>failed</strong> the G exam. Please try again.</p>
+            <% } %>
+        </div>
+
         <div id="booked-appointment-details-view">
             <p>Appointment Scheduled</p>
             <h3 id="booked-appointment-date-time"></h3>

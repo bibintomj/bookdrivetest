@@ -662,6 +662,34 @@ label, strong {
     color: white;
 }
 
+#candidates-table-container {
+    border-radius: 20px; /* Rounded corners for the table container */
+    overflow: hidden; /* Ensure content respects the rounded corners */
+    border: 1px solid var(--borderColor); /* Optional: Add a border around the table container */
+}
+
+#candidates-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+#candidates-table th, 
+#candidates-table td {
+    padding: 20px 25px;
+    text-align: center;
+}
+
+#candidates-table th {
+    background-color: var(--navSelectionForgroundColor);
+    font-weight: bold;
+}
+
+#candidates-table tr:hover {
+    background-color: #f1f1f109;
+}
+
 /* Responsive Design */
 @media (max-width: 970px) {
     .nav-links {

@@ -218,22 +218,28 @@ async function setupCalendar() {
 
 async function hideCalendarAndShowAppointment() {
     $('#appointment-content-view').hide(); // Hide the calendar view
-    $('#booked-appointment-details-view').show(); // Show the appointment details view
-    try {
-        // Fetch the appointment details from the backend using the appointment ID
-        const response = await fetch(`/get-appointment/${userData.appointmentId}`);
-        const appointment = await response.json();
-        console.log(appointment)
 
+    if (userData.testStatus !== "decision pending") {
+        // If the test is completed (pass or fail), show the result
+        $('#test-status-view').show();
+        $('#booked-appointment-details-view').hide();
+    } else {
+        // Show appointment details
+        $('#booked-appointment-details-view').show();
+        try {
+            // Fetch the appointment details from the backend using the appointment ID
+            const response = await fetch(`/get-appointment/${userData.appointmentId}`);
+            const appointment = await response.json();
 
-        if (appointment && appointment.date && appointment.time) {
-            // Set the appointment details in the frontend
-            $('#booked-appointment-date-time').text(`${appointment.date} at ${appointment.time}`); // Set the date
-        } else {
-            console.log('No appointment found');
+            if (appointment && appointment.date && appointment.time) {
+                // Set the appointment details in the frontend
+                $('#booked-appointment-date-time').text(`${appointment.date} at ${appointment.time}`); // Set the date
+            } else {
+                console.log('No appointment found');
+            }
+        } catch (error) {
+            console.error('Error fetching appointment details:', error);
         }
-    } catch (error) {
-        console.error('Error fetching appointment details:', error);
     }
 }
 

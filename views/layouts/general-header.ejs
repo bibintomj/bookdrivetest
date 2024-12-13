@@ -26,10 +26,11 @@
 
             <% if (authenticatedUserId && authenticatedUserType == 'admin') { %>
                 <li><a id="appointmentItem" href="/appointment">Appointment</a></li>
+                <li><a id="candidatesItem" href="/candidates">Candidates</a></li>
             <% } %>
 
             <% if (authenticatedUserId && authenticatedUserType == 'examiner') { %>
-                <li><a id="appointmentItem" href="/examiner">Examiner</a></li>
+                <li><a id="examinerItem" href="/examiner">Examiner</a></li>
             <% } %>
 
             <% if(authenticatedUserId) { %>
@@ -48,7 +49,9 @@
         g2: "#g2Item",
         g: "#gItem",
         register: "#registerItem",
+        candidates: "#candidatesItem",
         appointment: "#appointmentItem",
+        examiner: "#examinerItem",
         login: "#loginItem",
     };
     $(map[key]).addClass("active");

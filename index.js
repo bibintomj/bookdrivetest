@@ -12,7 +12,7 @@ const { g, gTestGetUser, gTestUpdateUser } = require('./controllers/g-test-contr
 const { g2, g2Register } = require('./controllers/g2-test-controller.js')
 const { loginPage, loginAction, logoutAction } = require('./controllers/login-logout-controller.js')
 const { registerPage, registerAction } = require('./controllers/register-controller.js')
-const { appointmentPage, createOrUpdateSlotAction, getAllSlots, getAvailableSlots, getAppointment } = require("./controllers/appointment-controller.js");
+const { appointmentPage, createOrUpdateSlotAction, getAllSlots, getAvailableSlots, getAppointment, candidatesPage, fetchCandidates } = require("./controllers/appointment-controller.js");
 const { examinerPage, fetchAppointments, userDetails, updateCandidateStatus } = require("./controllers/examiner-controller.js");
 
 const redirectIfAuthenticatedMiddleware = require('./middlewares/redirectIfAuthenticatedMiddleware.js')
@@ -82,6 +82,10 @@ app.get('/get-all-slots/:date', getAllSlots);
 app.get('/get-available-slots/:date', getAvailableSlots);
 
 app.get('/get-appointment/:appointmentId', getAppointment);
+
+app.get("/candidates", redirectIfUnauthenticatedMiddleware, redirectIfNotAdminMiddleware, candidatesPage);
+
+app.get("/api/candidates", redirectIfUnauthenticatedMiddleware, redirectIfNotAdminMiddleware, fetchCandidates);
 
 app.get('/examiner', redirectIfNotExaminerMiddleware, examinerPage)
 
