@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Generic Imports
 const express = require("express");
 const app = express();
@@ -42,8 +44,7 @@ app.use("*", (req, res, next) => {
     next();
 })
 
-mongoose.connect(
-    "mongodb+srv://bibintomj:h3lJXs1UcQmeZghr@cluster0.hwrhl.mongodb.net/bookdrivetest?retryWrites=true&w=majority&appName=Cluster0",
+mongoose.connect(process.env.MONGO_URI,
     {
         // useNewUrlParser: true
     }
