@@ -23,8 +23,9 @@ const redirectIfNotDriverMiddleware = require('./middlewares/redirectIfNotDriver
 const redirectIfNotAdminMiddleware = require('./middlewares/redirectIfNotAdminMiddleware.js');
 const redirectIfNotExaminerMiddleware = require("./middlewares/redirectIfNotExaminerMiddleware.js");
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(expressSession({
