@@ -49,9 +49,9 @@ mongoose.connect(process.env.MONGO_URI,
         // useNewUrlParser: true
     }
 );
-
-app.listen(3000, () => {
-    console.log("Listening to port 3000");
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+    console.log("Listening to port 4000");
 });
 
 app.get("/", homeController);
@@ -97,3 +97,5 @@ app.get('/examiner/user-details/:id', redirectIfNotExaminerMiddleware, userDetai
 app.post('/examiner/update-status', redirectIfNotExaminerMiddleware, updateCandidateStatus);
 
 app.get("/logout", logoutAction);
+
+module.exports = app;
